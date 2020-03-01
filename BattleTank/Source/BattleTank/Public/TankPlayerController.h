@@ -36,7 +36,7 @@ private:
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection, FVector& OutLookLocation) const;
 
 	UPROPERTY(EditAnywhere)
-	int32 LineTraceRange = 1000000;
+	int32 LineTraceRange = 400000;
 
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector LookLocation, FVector& OutHitLocation) const;
 };

@@ -3,7 +3,7 @@
 
 #include "TankBarrel.h"
 
-void UTankBarrel::Elevate(float DegreesPerSecond) const
+void UTankBarrel::Elevate(float RelativeSpeed) const
 {
-	UE_LOG(LogTemp, Display, TEXT("%s's barrel moving at speed %f"), *GetOwner()->GetName(), DegreesPerSecond);
+	
 }
