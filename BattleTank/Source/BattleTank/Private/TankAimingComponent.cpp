@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Kismet/GameplayStatics.h"
+#include "TankBarrel.h"
 #include "Components/StaticMeshComponent.h"
 #include "TankAimingComponent.h"
 
@@ -14,7 +15,7 @@ UTankAimingComponent::UTankAimingComponent()
 }
 
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UTankBarrel *BarrelToSet)
 {
 	Barrel = BarrelToSet;
 }
@@ -58,5 +59,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) const
 	FRotator AimRotator = AimDirection.Rotation();
 	FRotator DeltaRotator = AimRotator - BarrelRotator;
 
-	UE_LOG(LogTemp, Display, TEXT("%s aiming at %s"), *GetOwner()->GetName(), *DeltaRotator.ToString());
+
+	Barrel->Elevate(5.f);
 }
