@@ -39,4 +39,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 4000.f;
+
+	UFUNCTION(BlueprintCallable, Category = Firing)
+	void Fire();
 };
