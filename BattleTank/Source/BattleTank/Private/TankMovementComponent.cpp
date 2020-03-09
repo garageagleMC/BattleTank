@@ -2,3 +2,7 @@
 
 #include "TankMovementComponent.h"
 
+void UTankMovementComponent::IntendMoveForward(float Throttle)
+{
+	UE_LOG(LogTemp, Display, TEXT("Forward throttle at %f"), Throttle);
+}
