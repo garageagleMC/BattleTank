@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankMovementComponent.h"
+#include "TankTrack.h"
 
 void UTankMovementComponent::Initialize(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
 {
@@ -10,8 +11,15 @@ void UTankMovementComponent::Initialize(UTankTrack* LeftTrackToSet, UTankTrack* 
 	RightTrack = RightTrackToSet;
 }
 
-void UTankMovementComponent::IntendMoveForward(float Throttle)
+void UTankMovementComponent::IntendMoveForward(float Throw)
 {
-	UE_LOG(LogTemp, Display, TEXT("Forward throttle at %f"), Throttle);
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(Throw);
+}
+
+void UTankMovementComponent::IntendRotate(float Throw)
+{
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(-Throw);
 }
 
