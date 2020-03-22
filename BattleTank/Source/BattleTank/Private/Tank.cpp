@@ -29,9 +29,10 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
+	if (!ensure(Barrel)) { return; }
 	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTime;
 
-	if (Barrel && bIsReloaded)
+	if (bIsReloaded)
 	{
 
 		FVector SpawnLocation = Barrel->GetSocketLocation(FName("Projectile"));
