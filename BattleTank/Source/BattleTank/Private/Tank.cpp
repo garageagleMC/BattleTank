@@ -1,8 +1,5 @@
 // Copyright Replitz Studios
 
-#include "TankAimingComponent.h"
-#include "TankBarrel.h"
-#include "Projectile.h"
 #include "Tank.h"
 
 // Sets default values
@@ -17,23 +14,4 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
-}
-
-void ATank::Fire()
-{
-	if (!ensure(Barrel)) { return; }
-	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTime;
-
-	if (bIsReloaded)
-	{
-
-		FVector SpawnLocation = Barrel->GetSocketLocation(FName("Projectile"));
-		FRotator SpawnRotation = Barrel->GetSocketRotation(FName("Projectile"));
-		AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, SpawnLocation, SpawnRotation);
-
-		Projectile->FireProjectile(LaunchSpeed);
-		LastFireTime = FPlatformTime::Seconds();
-	}
-	return;
 }
