@@ -1,6 +1,7 @@
 // Copyright Replitz Studios
 
 #include "Tank.h"
+#include "TankAimingComponent.h"
 #include "Engine/World.h"
 #include "DrawDebugHelpers.h"
 #include "TankPlayerController.h"
@@ -9,15 +10,14 @@ void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ATank* ControlledTank = GetControlledTank();
-
-	if (!ControlledTank)
+	UTankAimingComponent* AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	if (AimingComponent)
 	{
-		UE_LOG(LogTemp, Error, TEXT("PlayerController is not possessing a tank."));
+		FoundAimingComponent(AimingComponent);
 	}
 	else
 	{
-		UE_LOG(LogTemp, Display, TEXT("PlayerController possessing tank %s."), *ControlledTank->GetName());
+		UE_LOG(LogTemp, Error, TEXT("%s has no Aiming Component!"), *GetControlledTank()->GetName())
 	}
 }
 
@@ -35,7 +35,7 @@ ATank* ATankPlayerController::GetControlledTank() const
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
-	if (!GetControlledTank()) { return; }
+	if (!ensure(GetControlledTank())) { return; }
 
 	FVector HitLocation;
 	if (GetSightRayLocation(HitLocation))
