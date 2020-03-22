@@ -28,8 +28,6 @@ protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
 public:	
-	void AimAt(FVector HitLocation);
-
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float LaunchSpeed = 10000.f;
 

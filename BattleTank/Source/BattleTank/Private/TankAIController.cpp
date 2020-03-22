@@ -1,27 +1,26 @@
 // Copyright Replitz Studios
 
-#include "Tank.h"
-#include "Engine/World.h"
+#include "TankAimingComponent.h"
 #include "TankAIController.h"
 
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ControlledTank = Cast<ATank>(GetPawn());
-	PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+	ControlledTank = GetPawn();
+	PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
+	AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
 }
 
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (PlayerTank) {
-		FVector PlayerPosition = PlayerTank->GetActorLocation();
+	if (!ensure(PlayerTank && ControlledTank)) { return; }
 
-		MoveToActor(PlayerTank, AcceptanceRadius);
+	FVector PlayerPosition = PlayerTank->GetActorLocation();
+	MoveToActor(PlayerTank, AcceptanceRadius);
 
-		ControlledTank->AimAt(PlayerPosition);
-		ControlledTank->Fire();
-	}
+	AimingComponent->AimAt(PlayerPosition);
+	//ControlledTank->Fire();
 }
