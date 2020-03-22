@@ -3,8 +3,6 @@
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
-#include "TankMovementComponent.h"
-#include "Engine/World.h"
 #include "Tank.h"
 
 // Sets default values
