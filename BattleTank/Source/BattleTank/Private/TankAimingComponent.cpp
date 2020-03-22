@@ -73,7 +73,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) const
 
 void UTankAimingComponent::Fire()
 {
-	if (!ensure(Barrel)) { return; }
+	if (!ensure(Barrel && ProjectileBlueprint)) { return; }
 	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTime;
 
 	if (bIsReloaded)
