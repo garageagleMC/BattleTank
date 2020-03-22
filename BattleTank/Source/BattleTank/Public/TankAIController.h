@@ -26,5 +26,5 @@ private:
 	ATank* PlayerTank;
 	
 	UPROPERTY(EditDefaultsOnly)
-	float AcceptanceRadius = 10;
+	float AcceptanceRadius = 1000;
 };
