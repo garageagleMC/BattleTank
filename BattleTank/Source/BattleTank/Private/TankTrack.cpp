@@ -1,10 +1,10 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Replitz Studios
 
 #include "TankTrack.h"
 
 void UTankTrack::SetThrottle(float Throttle)
 {
-	// TODO Clamp throttle
+	Throttle = FMath::Clamp<float>(Throttle, -1.f, 1.f);
 
 	FVector AppliedForce = GetForwardVector() * Throttle * MaxDrivingForce;
 	FVector ForceLocation = GetComponentLocation();
