@@ -25,8 +25,10 @@ private:
 	APawn* ControlledTank;
 	APawn* PlayerTank;
 	
-	UPROPERTY(EditDefaultsOnly)
-	float AcceptanceRadius = 1000;
-
 	UTankAimingComponent* AimingComponent;
+
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	float AcceptanceRadius = 10000;
+
 };
