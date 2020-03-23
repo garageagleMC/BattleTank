@@ -84,7 +84,7 @@ void UTankAimingComponent::AimAt(FVector WorldAimLocation)
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
-	if (!ensure(Barrel || Turret)) { return; }
+	if (!ensure(Barrel) && !ensure(Turret)) { return; }
 
 	IndendedAimDirection = AimDirection;
 
@@ -99,7 +99,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 bool UTankAimingComponent::IsBarrelMoving()
 {
 	if (!ensure(Barrel)) { return false; }
-	return !Barrel->GetForwardVector().Equals(IndendedAimDirection, 0.01);
+	return !Barrel->GetForwardVector().Equals(IndendedAimDirection, 0.05);
 }
 
 void UTankAimingComponent::Fire()
