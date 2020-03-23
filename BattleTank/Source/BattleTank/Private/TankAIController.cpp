@@ -1,7 +1,7 @@
 // Copyright Replitz Studios
 
-#include "TankAimingComponent.h"
 #include "TankAIController.h"
+#include "TankAimingComponent.h"
 
 void ATankAIController::BeginPlay()
 {

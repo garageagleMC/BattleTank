@@ -27,6 +27,10 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
+	virtual void BeginPlay();
+
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Initialize(UTankTurret* TurretToSet, UTankBarrel* BarrelToSet);
 
@@ -36,8 +40,7 @@ public:
 	void Fire();
 
 protected:
-	UPROPERTY(BlueprintReadOnly, Category = State)
-	EFiringStatus FiringStatus = EFiringStatus::Aiming;
+	EFiringStatus FiringStatus = EFiringStatus::Reloading;
 
 private:
 	UTankBarrel* Barrel = nullptr;

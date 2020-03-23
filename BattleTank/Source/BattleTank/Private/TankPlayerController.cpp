@@ -1,9 +1,9 @@
 // Copyright Replitz Studios
 
+#include "TankPlayerController.h"
 #include "TankAimingComponent.h"
 #include "Engine/World.h"
 #include "DrawDebugHelpers.h"
-#include "TankPlayerController.h"
 
 void ATankPlayerController::BeginPlay()
 {
