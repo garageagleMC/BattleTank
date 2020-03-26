@@ -9,6 +9,7 @@
 UENUM()
 enum class EFiringStatus : uint8
 {
+	NoAmmo,
 	Reloading,
 	Aiming,
 	Locked
@@ -41,9 +42,14 @@ public:
 
 	EFiringStatus GetFiringStatus() const;
 
+	int32 GetAmmunition() const;
+
 protected:
 	UPROPERTY(BlueprintReadOnly)
 	EFiringStatus FiringStatus = EFiringStatus::Reloading;
+
+	UPROPERTY(BlueprintReadOnly)
+	int32 Ammunition = 5;
 
 private:
 	UTankBarrel* Barrel = nullptr;
