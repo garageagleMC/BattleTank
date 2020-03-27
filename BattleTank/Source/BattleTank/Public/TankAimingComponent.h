@@ -40,15 +40,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Firing)
 	void Fire();
 
+	UFUNCTION(BlueprintCallable, Category = Firing)
 	EFiringStatus GetFiringStatus() const;
 
+	UFUNCTION(BlueprintCallable, Category = Firing)
 	int32 GetAmmunition() const;
 
 protected:
-	UPROPERTY(BlueprintReadOnly)
-	EFiringStatus FiringStatus = EFiringStatus::Reloading;
-
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	int32 Ammunition = 5;
 
 private:
@@ -67,6 +66,8 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float ReloadTime = 3.f;
+
+	EFiringStatus FiringStatus = EFiringStatus::Reloading;
 
 	double LastFireTime = 0.00;
 
