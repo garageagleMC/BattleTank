@@ -38,8 +38,14 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	URadialForceComponent* ExplosionForce = nullptr;
 
+	UPROPERTY(EditDefaultsOnly)
+	float DestroyDelay = 15.f;
+
 public:	
 	void FireProjectile(float Speed);
+
+	UFUNCTION()
+	void DestroyProjectile();
 
 private:
 	UFUNCTION()
