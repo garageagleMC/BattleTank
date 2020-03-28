@@ -1,9 +1,10 @@
 // Copyright Replitz Studios
 
 #include "Projectile.h"
-#include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "PhysicsEngine/RadialForceComponent.h"
+#include "GameFramework/ProjectileMovementComponent.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -23,6 +24,9 @@ AProjectile::AProjectile()
 	ImpactBlast = CreateDefaultSubobject<UParticleSystemComponent>(FName("Impact Blast"));
 	ImpactBlast->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 	ImpactBlast->bAutoActivate = false;
+
+	ExplosionForce = CreateDefaultSubobject<URadialForceComponent>(FName("Explosion Force"));
+	ExplosionForce->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(FName("Projectile Movement"));
 	ProjectileMovement->bAutoActivate = false;
@@ -46,8 +50,8 @@ void AProjectile::FireProjectile(float Speed)
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-	UE_LOG(LogTemp, Display, TEXT("Hit!"))
 	ImpactBlast->Activate();
 	LaunchBlast->Deactivate();
+	ExplosionForce->FireImpulse();
 }
 
