@@ -48,7 +48,7 @@ public:
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
-	int32 Ammunition = 5;
+	int32 Ammunition = 20;
 
 private:
 	UTankBarrel* Barrel = nullptr;
