@@ -41,6 +41,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	float DestroyDelay = 15.f;
 
+	UPROPERTY(EditDefaultsOnly)
+	float ProjectileDamage = 20.f;
+
 public:	
 	void FireProjectile(float Speed);
 
