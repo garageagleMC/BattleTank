@@ -21,10 +21,10 @@ public:
 
 	void ApplySidewaysForce();
 
-	UFUNCTION(BlueprintCallable, Category = Input)
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	void SetThrottle(float Throttle);
 
-	UPROPERTY(EditDefaultsOnly, Category = Movement)
+	UPROPERTY(EditDefaultsOnly, Category = "Movement")
 	float MaxDrivingForce = 30000000.f;
 
 private:
