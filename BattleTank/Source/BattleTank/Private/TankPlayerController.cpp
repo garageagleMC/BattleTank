@@ -38,7 +38,8 @@ void ATankPlayerController::SetPawn(APawn* InPawn)
 
 void ATankPlayerController::OnTankDeath()
 {
-	UE_LOG(LogTemp, Display, TEXT("Player tank has died."))
+	UE_LOG(LogTemp, Display, TEXT("Player tank has died."));
+	StartSpectatingOnly();
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
