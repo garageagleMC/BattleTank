@@ -21,9 +21,9 @@ float ATank::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, ACo
 {
 	int DamageToApply = FMath::Clamp<int>(FMath::RoundToInt(DamageAmount), 0, CurrentHealth);
 
-	CurrentHealth -= DamageToApply;
+	CurrentHealth = CurrentHealth - DamageToApply;
 	if (CurrentHealth <= 0) {
-		// die
+		OnDeath.Broadcast();
 	}
 
 	return DamageToApply;
